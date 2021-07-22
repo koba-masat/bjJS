@@ -32,6 +32,21 @@ class Deck {
     }
 }
 
-window.onload = () => {
+let deck = new Deck();
 
+let deal = (id) => {
+    let card = deck.draw();
+    $(id).append("mark："+card[0]+"<br>num："+card[1]);
 }
+
+window.onload = () => {
+    deal("#d-1");
+    deal("#d-2");
+    deal("#p-1");
+    deal("#p-2");
+}
+
+$('#hit').on('click', () => {
+    $("#player").append('<div id="p-3" class="face-up"></div>');
+    deal("#p-3");
+});
